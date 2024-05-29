@@ -5,8 +5,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const password = document.getElementById('password').value;
 
     // Credenciales estáticas para la demostración
-    const validUsername = 'usuario';
-    const validPassword = 'contraseña';
+    const validUsername = 'TOPMACRO';
+    const validPassword = 'Salmorejo01';
 
     if (username === validUsername && password === validPassword) {
         // Guardar información de sesión
