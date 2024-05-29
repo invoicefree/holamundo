@@ -10,14 +10,26 @@
     <div id="content" style="display: none;">
         <h1>Hola Mundo</h1>
         <button id="greetButton">Haz clic para saludar</button>
-        <iframe id="pdfViewer" src="" width="600" height="500" style="display: none;"></iframe>
+        <iframe id="pdfViewer" width="600" height="500" style="display: none;"></iframe>
+        <p id="errorMessage" style="color: red; display: none;">Archivo PDF no especificado o no encontrado</p>
     </div>
     <script>
+        // Función para obtener parámetros de la URL
+        function getQueryParam(param) {
+            let params = new URLSearchParams(window.location.search);
+            return params.get(param);
+        }
+
         // Verificar si el usuario está autenticado
         if (sessionStorage.getItem('loggedIn')) {
             document.getElementById('content').style.display = 'block';
-            document.getElementById('pdfViewer').src = '24-1120.pdf';  // Ruta al archivo PDF
-            document.getElementById('pdfViewer').style.display = 'block';
+            let pdfFile = getQueryParam('file');
+            if (pdfFile) {
+                document.getElementById('pdfViewer').src = pdfFile;
+                document.getElementById('pdfViewer').style.display = 'block';
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+            }
         } else {
             window.location.href = 'login.html';
         }
