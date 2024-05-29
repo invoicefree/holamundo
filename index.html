@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Hola Mundo</h1>
-    <button id="greetButton">Haz clic para saludar</button>
+    <div id="content" style="display: none;">
+        <h1>Hola Mundo</h1>
+        <button id="greetButton">Haz clic para saludar</button>
+    </div>
+    <script>
+        // Verificar si el usuario está autenticado
+        if (sessionStorage.getItem('loggedIn')) {
+            document.getElementById('content').style.display = 'block';
+        } else {
+            window.location.href = 'login.html';
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
